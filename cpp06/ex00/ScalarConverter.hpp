@@ -11,16 +11,18 @@ class ScalarConverter
 
 		ScalarConverter &operator=(ScalarConverter const &toCopy);
 
-		static std::string convert(std::string const &value);
+		static void convert(std::string const &value);
 		
 
 
 	private: 
 
 		ScalarConverter();
-		ScalarConverter(std::string const &value);
-		ScalarConverter(ScalarConverter const &toCopy);
+		// ScalarConverter(std::string const &value);
+		// ScalarConverter(ScalarConverter const &toCopy);
 };
 
+bool isChar(std::string const &value);
+bool isNum(std::string const &value);
 
-#endif SCALARCONVERTER_HPP
+#endif
