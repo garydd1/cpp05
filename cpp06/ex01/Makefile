@@ -1,4 +1,4 @@
-Name = convert
+Name = serialize
 CC = g++ -std=c++98
 CFLAGS = -Wall -Wextra -Werror
 SRCS = $(wildcard *.cpp)
