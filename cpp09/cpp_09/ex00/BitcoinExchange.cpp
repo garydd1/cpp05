@@ -36,22 +36,36 @@ bool BitcoinExchange::readData(std::string filename)
 			std::string date;
 			double value;
 
-			if (line.find(',') == std::string:npos)
+			if (line.find(',') == std::string::npos)
 				throw BitcoinExchange::InputException();
 			std::getline(ss, date, ',');
-			(ss >> value);
+			if (!(ss >> value))
+				throw BitcoinExchange::InputException();
 			_addData(date, value);
 		}
 	}
 	catch(const std::exception& e)
 	{
-		std::c.err << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 	file.close();
 	return true;
 }
 
-const char* BitcoinExchange::InputException::what()
+void BitcoinExchange::IsValidDate(std::String date)
+{
+	if (date.size != 10 || date[4] != '-' || date[7] != '-')
+		throw BitcoinExchange::InputException();
+	for (int i = 0; i < 10; ++i)
+	{
+		if (i == 4 || i == 7)
+			continue;
+		if (!isdigit(date[i]))
+			throw BitcoinExchange::InputException();
+	}
+}
+
+const char* BitcoinExchange::InputException::what() const throw()
 {
 	return("Invalid format in file");
 }
@@ -70,6 +84,6 @@ void BitcoinExchange::printValue(int n)
 	// 	std::cout <<it->first << "," << it->second << std::endl;
 	// }
 	n++;
-	it = _dataExchange.end();
+	it = --_dataExchange.end();
 	std::cout << (it->first) << std::endl;
 }

@@ -21,7 +21,7 @@ class BitcoinExchange
 
 		bool readData(std::string filename);
 		void printValue(int n);
-
+		static void IsValidDate(std::string date);
 		class InputException: public std::exception
 		{
 			public:
