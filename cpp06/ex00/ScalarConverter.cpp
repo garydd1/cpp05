@@ -12,6 +12,19 @@ ScalarConverter::~ScalarConverter()
 	std::cout << "Destructor called" << std::endl;
 }
 
+ScalarConverter::ScalarConverter(ScalarConverter const &toCopy)
+{
+	(void)toCopy;
+	std::cout << "Copy constructor called" << std::endl;
+}
+
+ScalarConverter &ScalarConverter::operator=(ScalarConverter const &toCopy)
+{
+	(void)toCopy;
+	std::cout << "Assignation operator called" << std::endl;
+	return *this;
+}
+
 void ScalarConverter::convert(std::string const &value)
 {
 	//Convert to char

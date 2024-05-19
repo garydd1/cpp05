@@ -1,12 +1,11 @@
 #include "AForm.hpp"
-#include "ShruberyCreationForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include <fstream>
 #include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("Default", 75, 45)
 {
-	_target = _target;
 	_executed = false;
 	std::cout <<"Robotomy default Constructor Called" << std::endl;
 }

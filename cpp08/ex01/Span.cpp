@@ -42,7 +42,6 @@ int		Span::shortestSpan()
 	std::vector<int> tmp = this->_v;
 	std::sort(tmp.begin(), tmp.end());
 	std::vector<int> diffs(tmp.size());
-	std::cout << std::endl;
 	std::adjacent_difference(tmp.begin(), tmp.end(), diffs.begin());
 	int min = *std::min_element(diffs.begin() +1, diffs.end());
 	return (min);

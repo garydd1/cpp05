@@ -1,4 +1,4 @@
-Name = ex02
+Name = Array
 CC = g++ -std=c++98
 CFLAGS = -Wall -Wextra -Werror
 SRCS = $(wildcard *.cpp)

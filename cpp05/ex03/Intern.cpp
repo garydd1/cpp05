@@ -5,10 +5,10 @@ Intern::Intern()
 {
 	_forms[0] = "presidential pardon";
 	_forms[1] = "robotomy request";
-	_forms[2] = "shrubery creation";
+	_forms[2] = "shrubbery creation";
 	_makeForm[0] = &Intern::makePresidentialPardonForm;
 	_makeForm[1] = &Intern::makeRobotomyRequestForm;
-	_makeForm[2] = &Intern::makeShruberyCreationForm;
+	_makeForm[2] = &Intern::makeshrubberyCreationForm;
 }
 
 Intern::~Intern()
@@ -50,8 +50,8 @@ AForm* Intern::makeRobotomyRequestForm(std::string target)
 	return (new RobotomyRequestForm(target));
 }
 
-AForm* Intern::makeShruberyCreationForm(std::string target)
+AForm* Intern::makeshrubberyCreationForm(std::string target)
 {
-	std::cout << "Intern creates " << target << " Shrubery form" << std::endl;
-	return (new ShruberyCreationForm(target));
+	std::cout << "Intern creates " << target << " shrubbery form" << std::endl;
+	return (new shrubberyCreationForm(target));
 }

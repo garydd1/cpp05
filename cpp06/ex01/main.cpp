@@ -8,6 +8,8 @@ int main()
 	data.n = 42;
 	data.s2 = "World";
 	uintptr_t raw = Serializer::serialize(&data);
+	std::cout << raw << std::endl;
+	std::cout << &raw << std::endl;
 	Serializer::Data* data2 = Serializer::deserialize(raw);
 	std::cout << data2->s1 << std::endl;
 	std::cout << data2->n << std::endl;

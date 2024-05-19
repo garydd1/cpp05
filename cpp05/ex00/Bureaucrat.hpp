@@ -31,7 +31,7 @@ class Bureaucrat
 	int				getGrade() const;
 	void			incrementGrade(int toInc);
 	void			decrementGrade(int toDec);
-	std::ostream&	operator<<(std::ostream& cout);
+	// std::ostream&	operator<<(std::ostream& cout);
 	
 	private:
 
@@ -40,7 +40,7 @@ class Bureaucrat
 
 };
 
-// std::ostream& operator<<(std::ostream& cout, Bureaucrat& toPrint);
+std::ostream& operator<<(std::ostream& cout, Bureaucrat& toPrint);
 
 
 #endif

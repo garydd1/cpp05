@@ -1,12 +1,11 @@
 #include "AForm.hpp"
-#include "ShruberyCreationForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include <fstream>
 #include <cstdlib>
 
 PresidentialPardonForm::PresidentialPardonForm() : AForm("Default", 75, 45)
 {
-	_target = _target;
 	_executed = false;
 	std::cout <<"PresidentialPardon default Constructor Called" << std::endl;
 }

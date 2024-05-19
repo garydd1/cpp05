@@ -5,8 +5,15 @@ Bureaucrat::Bureaucrat(void): _name("Default"), _grade(150)
 	std::cout << "Default Bureaucrat created" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade)
+Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
 {
+	if (grade < 1)
+		throw Bureaucrat::GradetooHighException();
+	else if (grade > 150)
+		throw Bureaucrat::GradetooLowException();
+	else
+		_grade = grade;
+
 	std::cout << "Bureaucrat "<< _name << " created" << std::endl;
 }
 
@@ -73,11 +80,11 @@ void Bureaucrat::decrementGrade(int toDec)
 	
 }
 
-std::ostream& Bureaucrat::operator<<(std::ostream& COUT)
-{
-	COUT <<this->getName()<<", bureaucrat grade " << this->getGrade()<<std::endl;
-	return (COUT);
-}
+// std::ostream& Bureaucrat::operator<<(std::ostream& COUT)
+// {
+// 	COUT <<this->getName()<<", bureaucrat grade " << this->getGrade()<<std::endl;
+// 	return (COUT);
+// }
 
 const char* Bureaucrat::GradetooHighException::what() const throw()
 {
@@ -90,8 +97,8 @@ const char* Bureaucrat::GradetooLowException::what() const throw()
 }
 
 
-// std::ostream& operator<<(std::ostream& COUT, Bureaucrat& toPrint)
-// {
-// 	COUT <<toPrint.getName()<<", bureaucrat grade " << toPrint.getGrade()<<std::endl;
-// 	return (COUT);
-// }
+std::ostream& operator<<(std::ostream& COUT, Bureaucrat& toPrint)
+{
+	COUT <<toPrint.getName()<<", bureaucrat grade " << toPrint.getGrade()<<std::endl;
+	return (COUT);
+}

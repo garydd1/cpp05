@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
-#include "ShruberyCreationForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
@@ -8,7 +8,7 @@ int main(void)
 {
 	Bureaucrat b1("JUAN", 150);
 	b1<< std::cout;
-	ShruberyCreationForm f1("wh");
+	shrubberyCreationForm f1("wh");
 	f1.execute(b1);	
 	f1.beSigned(b1);
 	b1.signForm(f1);

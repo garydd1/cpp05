@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
-#include "ShruberyCreationForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "Intern.hpp"
@@ -10,7 +10,7 @@ int main(void)
 	Bureaucrat b1("JUAN", 150);
 	//Intern
 	Intern intern;
-	AForm* f1 = intern.makeForm("shrubery creation", "wh");
+	AForm* f1 = intern.makeForm("shrubbery creation", "wh");
 	f1->execute(b1);
 	f1->beSigned(b1);
 	b1.incrementGrade(149);
