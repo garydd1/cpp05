@@ -1,5 +1,5 @@
-#ifndef IDENTIFY_HPP
-# define IDENTIFY_HPP
+#ifndef BASE_HPP
+# define BASE_HPP
 #include <iostream>
 
 class Base

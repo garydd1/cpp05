@@ -15,6 +15,7 @@ T min(T const &a, T const &b)
 template <typename T>
 void swap(T &a, T &b)
 {
+	std::cout << "swap" << std::endl;
 	T tmp = a;
 	a = b;
 	b = tmp;

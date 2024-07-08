@@ -1,27 +1,31 @@
 #ifndef SERIALIZER_HPP
 # define SERIALIZER_HPP
 #include <iostream>
-#include <cstdint>
+
 
 class Serializer
 {
-	public:
+    public:
 
-	typedef struct Data
-	{
-		std::string s1;
-		int n;
-		std::string s2;
-	} Data;
+    typedef struct Data
+    {
+        std::string s1;
+        int n;
+        std::string s2;
+    } Data;
+    
+    static void* serialize(Data* ptr); // Changed return type to void*
+    static Data* deserialize(void* raw); // Changed parameter type to void*
+	 
 	
-	static uintptr_t serialize(Data* ptr);
-	static Data* deserialize(uintptr_t raw);
+    ~Serializer();
+	Serializer &operator=(Serializer const &toCopy);
+	Serializer(Serializer const &toCopy);
 
-	~Serializer();
-	private:
-	
-	Serializer();
-
+    private:
+    
+    Serializer();
+	Serializer(std::string const &value);
 };
 
-#endif 
+#endif

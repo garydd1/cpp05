@@ -10,7 +10,6 @@
 #include <fstream>
 #include <list>
 #include <map>
-#include <unordered_map>
 #include <set>
 #define RED "\033[0;31m"
 #define GREEN "\033[0;32m"

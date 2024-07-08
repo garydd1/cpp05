@@ -6,13 +6,12 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 19:32:21 by dgarizad          #+#    #+#             */
-/*   Updated: 2024/05/17 20:31:17 by dgarizad         ###   ########.fr       */
+/*   Updated: 2024/07/08 11:53:38 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
 #include <iostream>
-#include <array>
 
 int main(void)
 {

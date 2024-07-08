@@ -1,7 +1,9 @@
-#include "Identify.hpp"
+#include "Base.hpp"
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
+#include <cstdlib> // For srand
+#include <ctime>   // For time
 
 int main(void)
 {

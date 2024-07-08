@@ -19,7 +19,7 @@ class ScalarConverter
 		ScalarConverter();
 		ScalarConverter &operator=(ScalarConverter const &toCopy);
 		ScalarConverter(ScalarConverter const &toCopy);
-		// ScalarConverter(std::string const &value);
+		ScalarConverter(std::string const &value);
 };
 
 bool isChar(std::string const &value);

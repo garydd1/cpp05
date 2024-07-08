@@ -27,7 +27,7 @@ int main(int argc, char** argv)
 	pm.InsertVectors();
 	std::clock_t stop = std::clock();
 	double elapsed = (stop - start) / static_cast<double>(CLOCKS_PER_SEC);
-	std::cout << "\n\n"GREEN"Elapsed time by VECTORS: " << std::fixed << elapsed << " seconds"RESET << std::endl;
+	std::cout << "\n\n"<<GREEN<<"Elapsed time by VECTORS: " << std::fixed << elapsed << " seconds"<< RESET << std::endl;
 	//END VECTORS
 	// LISTS
 	start = clock();
@@ -49,7 +49,7 @@ int main(int argc, char** argv)
 	pm.InsertLists();
 	stop = std::clock();
 	elapsed = (stop - start) / static_cast<double>(CLOCKS_PER_SEC);
-	std::cout << "\n\n"GREEN"Elapsed time by LISTS: " << std::fixed << elapsed << " seconds"RESET << std::endl;
+	std::cout << "\n\n"<<GREEN<<"Elapsed time by LISTS: " << std::fixed << elapsed << " seconds"<<RESET << std::endl;
 	// //END LISTS
 	return 0;
 }

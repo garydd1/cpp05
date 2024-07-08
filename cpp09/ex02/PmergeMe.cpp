@@ -95,28 +95,33 @@ void PmergeMe::readArgsList(int argc, char** argv)
 	//Check if there are repeated numbers
 	//save a copy of the unsorted vector
 	std::list<int> unsorted = numbers;
-	numbers.sort();
-	for (std::list<int>::iterator it = numbers.begin(); it != numbers.end(); it++)
-	{
-		if (*it == *(std::next(it)))
-		{
-			std::cout << "Error: " << *it << " is repeated" << std::endl;
-			exit(1);
-		}
-	}
+	std::list<int>::iterator it = numbers.begin();
+    while (it != numbers.end())
+    {
+        std::list<int>::iterator next_it = it;
+        ++next_it;
+        if (next_it != numbers.end() && *it == *next_it)
+        {
+            std::cout << "Error: " << *it << " is repeated" << std::endl;
+            exit(1);
+        }
+        ++it;
+    }
 	//Save the pairs in a vector of pairs
-	for (std::list<int>::iterator it = unsorted.begin(); it != unsorted.end(); it++)
-	{
-		if (std::next(it) == unsorted.end())
-		{
-			pairsList.push_back(std::make_pair(*it, -1));
-		}
-		else
-		{
-			pairsList.push_back(std::make_pair(*it, *(std::next(it))));
-			it++;
-		}
-	}
+	for (it = unsorted.begin(); it != unsorted.end(); ++it)
+    {
+        std::list<int>::iterator next_it = it;
+        ++next_it;
+        if (next_it == unsorted.end())
+        {
+            pairsList.push_back(std::make_pair(*it, -1));
+        }
+        else
+        {
+            pairsList.push_back(std::make_pair(*it, *next_it));
+            ++it; // Skip the next element as it's already paired
+        }
+    }
 }
 
 void PmergeMe::printVector()
@@ -440,80 +445,33 @@ void PmergeMe::MergeList(std::list<int>& array, int left, int mid, int right)
     }
 }
 
-// void PmergeMe::MergeList(std::list<int>& array, int left, int mid, int right)
-// {
-// 	int i, j, k;
-// 	int n1 = mid - left + 1;
-// 	int n2 = right - mid;
-
-// 	/* create temp arrays */
-// 	std::list<int> L;
-// 	std::list<int> R;
-
-// 	/* Copy data to temp arrays L[] and R[] */
-// 	for (i = 0; i < n1; i++)
-// 		L.push_back(array.front());
-// 		array.pop_front();
-// 	for (j = 0; j < n2; j++)
-// 		R.push_back(array.front());
-// 		array.pop_front();
-
-// 	/* Merge the temp arrays back into array[left..right]*/
-// 	i = 0; // Initial index of first subarray 
-// 	j = 0; // Initial index of second subarray 
-// 	k = left; // Initial index of merged subarray 
-// 	while (i < n1 && j < n2)
-// 	{
-// 		if (L.front() <= R.front())
-// 		{
-// 			array.push_back(L.front());
-// 			L.pop_front();
-// 		}
-// 		else
-// 		{
-// 			array.push_back(R.front());
-// 			R.pop_front();
-// 		}
-// 		k++;
-// 	}
-
-// 	/* Copy the remaining elements of L[], if there are any */
-// 	while (i < n1)
-// 	{
-// 		array.push_back(L.front());
-// 		L.pop_front();
-// 		i++;
-// 		k++;
-// 	}
-
-// 	/* Copy the remaining elements of R[], if there are any */
-// 	while (j < n2)
-// 	{
-// 		array.push_back(R.front());
-// 		R.pop_front();
-// 		j++;
-// 		k++;
-// 	}
-// }
 
 void PmergeMe::InsertLists() {
-	for (std::list<int>::iterator pend_it = _PendList.begin(); pend_it != _PendList.end(); ++pend_it) {
-		for (std::list<int>::iterator main_it = _MainList.begin(); main_it != _MainList.end(); ++main_it) {
-			if (*main_it > *pend_it) {
-				_MainList.insert(main_it, *pend_it);
-				break;
-			}
-			if ((std::next(main_it)) == _MainList.end()) {
-				_MainList.insert(_MainList.end(), *pend_it);
-				break;
-			}
-		}
-	}
-	std::cout << std::endl << "\nMerged list: " << std::endl;
-	for (std::list<int>::iterator it = _MainList.begin(); it != _MainList.end(); it++)
-	{
-		std::cout << *it << " ";
-	}
+    for (std::list<int>::iterator pend_it = _PendList.begin(); pend_it != _PendList.end(); ++pend_it) {
+        bool inserted = false;
+        for (std::list<int>::iterator main_it = _MainList.begin(); main_it != _MainList.end(); ++main_it) {
+            if (*main_it > *pend_it) {
+                _MainList.insert(main_it, *pend_it);
+                inserted = true;
+                break;
+            }
+            std::list<int>::iterator next_it = main_it;
+            ++next_it;
+            if (next_it == _MainList.end()) {
+                _MainList.insert(_MainList.end(), *pend_it);
+                inserted = true;
+                break;
+            }
+        }
+        if (!inserted) {
+            // This handles the case where _PendList has elements greater than all elements in _MainList
+            _MainList.push_back(*pend_it);
+        }
+    }
+    std::cout << std::endl << "\nMerged list: " << std::endl;
+    for (std::list<int>::iterator it = _MainList.begin(); it != _MainList.end(); it++) {
+        std::cout << *it << " ";
+    }
 }
 
 

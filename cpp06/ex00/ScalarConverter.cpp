@@ -1,6 +1,7 @@
 #include "ScalarConverter.hpp"
 #include <iomanip>
 #include <sstream>
+#include <cstdlib> 
 
 ScalarConverter::ScalarConverter()
 {
@@ -23,6 +24,12 @@ ScalarConverter &ScalarConverter::operator=(ScalarConverter const &toCopy)
 	(void)toCopy;
 	std::cout << "Assignation operator called" << std::endl;
 	return *this;
+}
+
+ScalarConverter::ScalarConverter(std::string const &value)
+{
+	std::cout << "Param Constructor called" << std::endl;
+	convert(value);
 }
 
 void ScalarConverter::convert(std::string const &value)
@@ -81,8 +88,8 @@ bool isChar(std::string const &value)
 bool isNum(std::string const &value)
 {
 	std::string copy = value;
-	if (!copy.empty() && copy.back() == 'f') {
-		copy.pop_back();  // Remove the 'f' at the end if it exists
+	if (!copy.empty() && copy[copy.size() - 1] == 'f') {
+    copy.erase(copy.size() - 1);  // Remove the 'f' at the end if it exists
 	}
 	std::istringstream iss(copy);
 	double i;
